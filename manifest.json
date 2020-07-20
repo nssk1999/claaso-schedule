@@ -1,10 +1,10 @@
 {
-  "name": "CSE-3 Classo SCHEDULE",
-  "short_name": "1821cse3",
+  "name": "Food Ninja",
+  "short_name": "FoodNinja",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#333f48",
-  "theme_color": "#bf5700",
+  "background_color": "#FFE9D2",
+  "theme_color": "#FFE1C4",
   "orientation": "portrait-primary",
   "icons": [
     {

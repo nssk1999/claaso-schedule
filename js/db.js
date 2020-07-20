@@ -1,16 +1,16 @@
 // const tid = evt.target.getAttribute('type-id');
 
 // enable offline data
-db.enablePersistence()
-  .catch(function(err) {
-    if (err.code == 'failed-precondition') {
-      // probably multible tabs open at once
-      console.log('persistance failed');
-    } else if (err.code == 'unimplemented') {
-      // lack of browser support for the feature
-      console.log('persistance not available');
-    }
-  });
+// db.enablePersistence()
+//   .catch(function(err) {
+//     if (err.code == 'failed-precondition') {
+//       // probably multible tabs open at once
+//       console.log('persistance failed');
+//     } else if (err.code == 'unimplemented') {
+//       // lack of browser support for the feature
+//       console.log('persistance not available');
+//     }
+//   });
 
 // real-time listener
 db.collection('classes').orderBy('date').onSnapshot(snapshot => {
@@ -57,7 +57,20 @@ classoContainer.addEventListener('click', evt => {
   if(evt.target.tagName === 'I'){
     const tid = evt.target.getAttribute('type-id');
     const id = evt.target.getAttribute('data-id');
-    if (tid==="delete") db.collection('classes').doc(id).delete();    
+    if (tid==="delete") db.collection('classes').doc(id).delete(); 
+    else {
+      console.log("edit initited");
+      db.collection('classes').doc(id).get().then(function(docs) {
+        renderEditset(docs.data());
+      //   var data=docs.data();
+      //   console.log(form.title.value);
+      //   form.title = data.name;
+      //   form.details= data.details;
+      //   form.dateio=data.date;
+      //   form.timeio=data.time;
+      });
+    }
+    
   }
 })
 
@@ -81,3 +94,32 @@ dateioContainer.addEventListener('click', evt => {
   }
 })
 
+// edited form 
+const forme = document.querySelector("#f2");
+// console.log(forme.titleioe.value);
+forme.addEventListener('submit', evt => {
+  evt.preventDefault();
+  const classio={
+    name: forme.titleioe.value,
+    details: forme.detailsioe.value,
+    date: forme.dateioioe.value,
+    time:forme.timeioioe.value
+  };
+  db.collection('classes').doc(forme.idioe.value).get().then(function(docset){
+      console.log(docset.data());
+      if(forme.titleioe.value===docset.data().name) delete classio.name;
+      if(forme.detailsioe.value===docset.data().details) delete classio.details;
+      if(forme.dateioioe.value===docset.data().date) delete classio.date;
+      if(forme.timeioioe.value===docset.data().time) delete classio.time;
+      console.log(classio); 
+  })
+
+  
+  // db.collection('classes').doc(forme.idioe.value).set(classio)
+  // .catch(err => console.log(err));
+    forme.idioe.value='';
+    forme.titleioe.value='';
+    forme.detailsioe.value='';
+    forme.dateioioe.value='';
+    forme.timeioioe.value='';
+});

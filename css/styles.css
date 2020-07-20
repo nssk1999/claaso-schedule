@@ -1,18 +1,18 @@
 /* colours */
 :root{
-  --primary:  #dcd2c4;
-  --secondary: #333f48;
-  --title: #bf5700;
+  --primary: #FFE9D2;
+  --secondary: #FFE1C4;
+  --title: #FF8816;
 }
 
 /* layout styles */
 nav{
-  background: var(--title);
+  background: var(--primary);
   border-bottom: 10px solid var(--secondary);
 }
 nav a{
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--title);
 }
 nav a span{
   font-weight: bold;
@@ -29,32 +29,19 @@ nav .sidenav-trigger{
 .classes{
   margin-top: 20px;
 }
-.card-panel.login{
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
-  margin-left: 10%;
-  margin-top: 10%;
-}
 .card-panel.classo{
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
   display: grid;
-  grid-template-columns: 2fr 6fr  1fr;
-  grid-template-areas: "name details delete";
+  grid-template-columns: 6fr 1fr 1fr;
+  grid-template-areas: "details edits delete";
   position: relative;
 }
 /* .classo img{
   grid-area: image;
   max-width: 60px;
 } */
-.classo-name{
-  grid-area: name;
-  margin-top: 25%;
-  /* bottom: 35%; */
-  font-size: xx-large;
-}
 .classo-details{
   grid-area: details;
   margin-top: 6px;
@@ -67,15 +54,17 @@ nav .sidenav-trigger{
   bottom: 25%;
   right: 5%;
 }
+.classo-edit i{
+  /* font-size: 10px; */
+}
 .classo-delete{
   grid-area: delete;
   position: absolute;
-  bottom: 35%;
+  bottom: 25%;
   right: 15%;
 }
 .classo-delete i{
   /* font-size: 50px; */
-  /* margin-top: 0%; */
 }
 .classo-title{
   font-weight: bold;
