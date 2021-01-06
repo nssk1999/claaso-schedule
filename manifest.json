@@ -1,6 +1,6 @@
 {
   "name": "CSE-3 Classo SCHEDULE",
-  "short_name": "1821cse3",
+  "short_name": "1721cse3",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#333f48",
@@ -47,5 +47,6 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "description": "This website is a solution to regulate the online classes conducted by teachers at MVSR Engineering college to CSE-3 2017-21 batch.!"
 }
